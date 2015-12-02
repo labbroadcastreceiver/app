@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="msroka.student.edu.agh.pl.broadcastreceivers" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- normal broadcasts receivers -->
+        <receiver android:name=".receivers.MyFirstBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.MyCustomBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.lab.WAZNE_POWIADOMIENIE"></action>
+            </intent-filter>
+        </receiver>
+
+        <!-- ordered broadcasts receivers -->
+        <receiver android:name=".orderedBroadcastReceivers.HighestPriorityReceiver">
+            <intent-filter android:priority="100">
+                <action android:name="android.lab.WAZNE_PRIORYTETOWANE_POWIADOMIENIE"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".orderedBroadcastReceivers.MediumPriorityReceiver">
+            <intent-filter android:priority="50">
+                <action android:name="android.lab.WAZNE_PRIORYTETOWANE_POWIADOMIENIE"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".orderedBroadcastReceivers.LowestPriorityReceiver">
+            <intent-filter android:priority="-80">
+                <action android:name="android.lab.WAZNE_PRIORYTETOWANE_POWIADOMIENIE"></action>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
